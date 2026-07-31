@@ -8,7 +8,7 @@ from typing import Any
 
 from langchain_core.runnables import Runnable, RunnableConfig, RunnableLambda
 
-from choreo.core.context import InMemoryRunContext, RunContext
+from choreoai.core.context import InMemoryRunContext, RunContext
 
 
 def _as_runnable(node: Runnable[Any, Any] | Any) -> Runnable[Any, Any]:

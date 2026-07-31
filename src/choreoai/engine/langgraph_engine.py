@@ -13,9 +13,9 @@ from typing import Any, TypedDict
 
 from langchain_core.runnables import Runnable
 
-from choreo.core.context import InMemoryRunContext, RunContext
-from choreo.core.middleware import Middleware
-from choreo.core.middleware_impl import OnionMiddlewareStack
+from choreoai.core.context import InMemoryRunContext, RunContext
+from choreoai.core.middleware import Middleware
+from choreoai.core.middleware_impl import OnionMiddlewareStack
 
 
 class GraphState(TypedDict, total=False):
@@ -32,7 +32,7 @@ def _require_langgraph() -> tuple[Any, Any, Any, Any]:
         from langgraph.graph import END, START, StateGraph
     except ImportError as exc:  # pragma: no cover - exercised when extra missing
         raise ImportError(
-            "choreo.engine requires langgraph; install with: pip install choreoai[langgraph]"
+            "choreoai.engine requires langgraph; install with: pip install choreoai[langgraph]"
         ) from exc
     return StateGraph, START, END, InMemorySaver
 

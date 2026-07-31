@@ -29,4 +29,4 @@ engine only sees already-wrapped Runnables.
 - Positive: same stack can wrap first-party agents and third-party Runnables.
 - Negative: misuse of order can surprise (e.g. budget outside vs inside retry); document
   recommended stacks.
-- Follow-on: contracts in `choreo.core.middleware` and `choreo.core.guardrail`.
+- Follow-on: contracts in `choreoai.core.middleware` and `choreoai.core.guardrail`.

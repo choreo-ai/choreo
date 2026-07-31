@@ -16,7 +16,7 @@ Split the stack into two layers:
 
 **Substrate (adopt their interfaces, from stable `langchain-core`):**
 
-- Tools: `langchain_core.tools.BaseTool` (`@choreo.tool` only produces a `BaseTool`).
+- Tools: `langchain_core.tools.BaseTool` (`@choreoai.tool` only produces a `BaseTool`).
 - Models: `langchain_core.language_models.BaseChatModel` (default Claude via
   `langchain-anthropic`).
 - Node/agent: LCEL `Runnable` (ADR 0002).

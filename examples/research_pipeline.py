@@ -27,18 +27,18 @@ if "pytest" in sys.modules:
 async def _run(question: str) -> None:
     from langchain_core.tools import tool
 
-    from choreo.agents import LLMAgent
-    from choreo.core import (
+    from choreoai.agents import LLMAgent
+    from choreoai.core import (
         BudgetMiddleware,
         InMemoryRunContext,
         ListSubscriber,
         SimpleEventEmitter,
         TraceMiddleware,
     )
-    from choreo.core.middleware_impl import OnionMiddlewareStack
-    from choreo.models import get_default_model
-    from choreo.orchestrate import sequence
-    from choreo.reliability import InMemoryBudget
+    from choreoai.core.middleware_impl import OnionMiddlewareStack
+    from choreoai.models import get_default_model
+    from choreoai.orchestrate import sequence
+    from choreoai.reliability import InMemoryBudget
 
     if not os.environ.get("ANTHROPIC_API_KEY"):
         print("ANTHROPIC_API_KEY is not set; aborting demo.", file=sys.stderr)

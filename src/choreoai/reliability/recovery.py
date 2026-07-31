@@ -12,7 +12,7 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any
 
-from choreo.core.context import RunContext
+from choreoai.core.context import RunContext
 
 
 class RecoveryAction(str, Enum):

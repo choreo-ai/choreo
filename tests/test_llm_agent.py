@@ -6,8 +6,8 @@ import pytest
 from langchain_core.messages import AIMessage
 from langchain_core.runnables import Runnable
 
-from choreo.agents import LLMAgent
-from choreo.core import ListSubscriber, SimpleEventEmitter
+from choreoai.agents import LLMAgent
+from choreoai.core import ListSubscriber, SimpleEventEmitter
 from fakes import FakeChatModel
 
 

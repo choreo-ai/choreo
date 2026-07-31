@@ -1,6 +1,6 @@
-import choreo
+import choreoai
 
 
 def test_version_is_present():
-    assert isinstance(choreo.__version__, str)
-    assert choreo.__version__
+    assert isinstance(choreoai.__version__, str)
+    assert choreoai.__version__

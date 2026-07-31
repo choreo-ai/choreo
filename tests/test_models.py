@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from langchain_core.language_models import BaseChatModel
 
-from choreo.models.claude import DEFAULT_MODEL_ID, FLAGSHIP_MODEL_ID, get_default_model
+from choreoai.models.claude import DEFAULT_MODEL_ID, FLAGSHIP_MODEL_ID, get_default_model
 
 
 def test_default_model_ids():

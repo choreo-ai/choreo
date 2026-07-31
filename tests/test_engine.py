@@ -5,18 +5,18 @@ from __future__ import annotations
 import pytest
 from langchain_core.runnables import RunnableLambda
 
-from choreo.core import (
+from choreoai.core import (
     BudgetMiddleware,
     InMemoryRunContext,
     ListSubscriber,
     SimpleEventEmitter,
     TraceMiddleware,
 )
-from choreo.reliability import BudgetExhausted, InMemoryBudget
+from choreoai.reliability import BudgetExhausted, InMemoryBudget
 
 langgraph = pytest.importorskip("langgraph")
 
-from choreo.engine.langgraph_engine import arun_plan, compile_plan  # noqa: E402
+from choreoai.engine.langgraph_engine import arun_plan, compile_plan  # noqa: E402
 
 
 @pytest.mark.asyncio

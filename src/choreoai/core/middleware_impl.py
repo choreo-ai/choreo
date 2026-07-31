@@ -1,7 +1,7 @@
 """Concrete middleware layers and stack for the vertical slice.
 
 Implements the ``Middleware`` / ``MiddlewareStack`` contracts from
-``choreo.core.middleware`` without redefining the ABCs.
+``choreoai.core.middleware`` without redefining the ABCs.
 """
 
 from __future__ import annotations
@@ -11,14 +11,14 @@ from collections.abc import Awaitable, Callable, Sequence
 from datetime import datetime, timezone
 from typing import TYPE_CHECKING, Any
 
-from choreo.core.context import RunContext
-from choreo.core.events import EventEmitter, SimpleEventEmitter, StepFinished
-from choreo.core.middleware import Middleware, MiddlewareStack, NextCall
+from choreoai.core.context import RunContext
+from choreoai.core.events import EventEmitter, SimpleEventEmitter, StepFinished
+from choreoai.core.middleware import Middleware, MiddlewareStack, NextCall
 
 if TYPE_CHECKING:
     # Avoid circular import: reliability.budget imports core.context, and
     # core.__init__ imports this module. Runtime imports are deferred below.
-    from choreo.reliability.budget import Budget
+    from choreoai.reliability.budget import Budget
 
 
 class OnionMiddlewareStack(MiddlewareStack):
@@ -95,7 +95,7 @@ class BudgetMiddleware(Middleware):
         name: str = "budget",
     ) -> None:
         # Lazy import: keep core importable before/without reliability load order.
-        from choreo.reliability.budget import BudgetDimensions
+        from choreoai.reliability.budget import BudgetDimensions
 
         self.budget = budget
         self.name = name
@@ -111,7 +111,7 @@ class BudgetMiddleware(Middleware):
         *,
         context: RunContext | None = None,
     ) -> Any:
-        from choreo.reliability.budget import BudgetExhausted
+        from choreoai.reliability.budget import BudgetExhausted
 
         # check then consume (consume re-checks); strict raises BudgetExhausted
         decision = self.budget.check(self.amounts, context=context)

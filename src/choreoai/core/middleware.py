@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from collections.abc import Awaitable, Callable, Sequence
 from typing import Any, TypeVar
 
-from choreo.core.context import RunContext
+from choreoai.core.context import RunContext
 
 InputT = TypeVar("InputT")
 OutputT = TypeVar("OutputT")

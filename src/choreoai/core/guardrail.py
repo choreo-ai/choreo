@@ -12,7 +12,7 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any
 
-from choreo.core.context import RunContext
+from choreoai.core.context import RunContext
 
 
 class GuardrailStage(str, Enum):
@@ -53,7 +53,7 @@ class Guardrail(ABC):
     them at the appropriate stage and interprets ``GuardrailResult``.
 
     On trip (``allowed is False``), core emits ``GuardrailTripped`` and consults
-    the active ``RecoveryPolicy`` (see ``choreo.reliability.recovery``).
+    the active ``RecoveryPolicy`` (see ``choreoai.reliability.recovery``).
     """
 
     name: str

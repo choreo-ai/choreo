@@ -60,7 +60,7 @@ pip install git+https://github.com/choreo-ai/choreoai
 ```
 
 ```bash
-choreoai            # confirm the install (alias: choreo)
+choreoai            # confirm the install
 ```
 
 ## Quickstart
@@ -68,7 +68,7 @@ choreoai            # confirm the install (alias: choreo)
 > Illustrative &mdash; this is the API ChoreoAI is being designed around.
 
 ```python
-from choreo import BaseAgent, Orchestrator, budget
+from choreoai import BaseAgent, Orchestrator, budget
 
 class Researcher(BaseAgent):
     system = "Find and summarize sources for the given topic."

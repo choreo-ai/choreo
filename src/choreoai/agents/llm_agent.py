@@ -19,8 +19,8 @@ from langchain_core.messages import (
 from langchain_core.runnables import Runnable, RunnableConfig
 from langchain_core.tools import BaseTool
 
-from choreo.core.context import InMemoryRunContext, RunContext
-from choreo.core.events import (
+from choreoai.core.context import InMemoryRunContext, RunContext
+from choreoai.core.events import (
     EventEmitter,
     LLMCalled,
     RunFinished,
@@ -130,7 +130,7 @@ class LLMAgent(Runnable[Any, Any]):
         if model is None:
             raise ValueError(
                 "LLMAgent requires a model=BaseChatModel; "
-                "pass a fake model in tests or choreo.models.get_default_model() for live runs"
+                "pass a fake model in tests or choreoai.models.get_default_model() for live runs"
             )
         if max_steps < 1:
             raise ValueError("max_steps must be >= 1")

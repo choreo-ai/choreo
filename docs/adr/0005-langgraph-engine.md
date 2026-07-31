@@ -27,5 +27,5 @@ Do not build a competing runtime.
 - Positive: inherit checkpointing, streaming, interrupt, and ecosystem tooling.
 - Positive: users already on LangGraph add ChoreoAI concerns without migration.
 - Negative: optional dependency on `langgraph` (extra); engine code isolated under
-  `choreo.engine`.
+  `choreoai.engine`.
 - Follow-on: `RunContext` in graph state (ADR 0006) so budgets survive resume.

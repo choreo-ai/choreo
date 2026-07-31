@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from choreo.core import (
+from choreoai.core import (
     BudgetMiddleware,
     InMemoryRunContext,
     ListSubscriber,
@@ -12,7 +12,7 @@ from choreo.core import (
     SimpleEventEmitter,
     TraceMiddleware,
 )
-from choreo.reliability import BudgetExhausted, BudgetDimensions, InMemoryBudget
+from choreoai.reliability import BudgetExhausted, BudgetDimensions, InMemoryBudget
 
 
 def test_in_memory_budget_check_and_consume():

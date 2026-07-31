@@ -30,4 +30,4 @@ emit ChoreoAI events explicitly so the contract stays stable across engine versi
 - Positive: guardrails and budgets can emit the same stream as LLM/tool steps.
 - Negative: must maintain a bridge to LangGraph stream modes; avoid leaking engine-only
   event shapes as public API.
-- Follow-on: contract in `choreo.core.events` (`Event`, `Subscriber`, concrete event types).
+- Follow-on: contract in `choreoai.core.events` (`Event`, `Subscriber`, concrete event types).

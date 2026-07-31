@@ -2,13 +2,13 @@
 
 from enum import Enum
 
-import choreo.core as core
-import choreo.reliability as reliability
-from choreo.core.events import ChoreoEvent, EventEmitter
-from choreo.core.guardrail import GuardrailResult, GuardrailStage
-from choreo.core.middleware import Middleware, NextCall
-from choreo.reliability.budget import BudgetDecision, BudgetDimensions, BudgetExhausted
-from choreo.reliability.recovery import RecoveryAction, RecoveryContext, RecoveryDecision
+import choreoai.core as core
+import choreoai.reliability as reliability
+from choreoai.core.events import ChoreoEvent, EventEmitter
+from choreoai.core.guardrail import GuardrailResult, GuardrailStage
+from choreoai.core.middleware import Middleware, NextCall
+from choreoai.reliability.budget import BudgetDecision, BudgetDimensions, BudgetExhausted
+from choreoai.reliability.recovery import RecoveryAction, RecoveryContext, RecoveryDecision
 
 
 def test_core_contract_exports():

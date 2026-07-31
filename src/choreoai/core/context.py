@@ -21,7 +21,7 @@ class RunContext(ABC):
     Minimum contents (ADR 0006):
 
     - **Budget ledger** -- consumed amounts vs caps (see
-      ``choreo.reliability.budget``).
+      ``choreoai.reliability.budget``).
     - **Event cursor** -- monotonic sequence for the typed event stream.
 
     Implementations must be serializable enough for the configured checkpointer
@@ -57,7 +57,7 @@ class RunContext(ABC):
         """Return a JSON-friendly snapshot of the budget ledger.
 
         The concrete shape matches ``BudgetSnapshot`` / ledger fields owned by
-        ``choreo.reliability.budget``. Stored inside state so resume continues
+        ``choreoai.reliability.budget``. Stored inside state so resume continues
         with the same consumption counts.
         """
         ...

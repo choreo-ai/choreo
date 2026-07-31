@@ -17,22 +17,22 @@ def _import_in_fresh_interpreter(module: str) -> subprocess.CompletedProcess[str
 
 
 def test_import_choreo_reliability_first() -> None:
-    """import choreo.reliability must work as the very first import."""
-    result = _import_in_fresh_interpreter("choreo.reliability")
+    """import choreoai.reliability must work as the very first import."""
+    result = _import_in_fresh_interpreter("choreoai.reliability")
     assert result.returncode == 0, (
-        f"circular import or failure importing choreo.reliability first:\n"
+        f"circular import or failure importing choreoai.reliability first:\n"
         f"stdout={result.stdout!r}\nstderr={result.stderr!r}"
     )
     assert "ok" in result.stdout
 
 
 def test_import_choreo_core_first() -> None:
-    result = _import_in_fresh_interpreter("choreo.core")
+    result = _import_in_fresh_interpreter("choreoai.core")
     assert result.returncode == 0, result.stderr
     assert "ok" in result.stdout
 
 
 def test_import_choreo_package_first() -> None:
-    result = _import_in_fresh_interpreter("choreo")
+    result = _import_in_fresh_interpreter("choreoai")
     assert result.returncode == 0, result.stderr
     assert "ok" in result.stdout

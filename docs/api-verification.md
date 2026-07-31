@@ -14,7 +14,7 @@ re-check before implementation if versions have moved.
 - **Subclass pattern:** implement sync `_run` and optionally async `_arun` (historic
   convention still used by custom tools); public entry is via `invoke`/`ainvoke`.
 - **Convenience:** `@tool` decorator and `StructuredTool` produce `BaseTool` instances.
-- **ChoreoAI implication:** accept any `BaseTool`; `@choreo.tool` is a thin convenience that
+- **ChoreoAI implication:** accept any `BaseTool`; `@choreoai.tool` is a thin convenience that
   yields a `BaseTool`. Do not invent a parallel tool type.
 
 ## `langchain_core.language_models.BaseChatModel`

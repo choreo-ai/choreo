@@ -1,6 +1,6 @@
 """Reliability value-add: budgets, retries, recovery policies."""
 
-from choreo.reliability.budget import (
+from choreoai.reliability.budget import (
     Budget,
     BudgetDecision,
     BudgetDimensions,
@@ -8,7 +8,7 @@ from choreo.reliability.budget import (
     BudgetSnapshot,
     InMemoryBudget,
 )
-from choreo.reliability.recovery import (
+from choreoai.reliability.recovery import (
     RecoveryAction,
     RecoveryContext,
     RecoveryDecision,

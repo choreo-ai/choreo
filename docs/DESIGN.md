@@ -2,7 +2,7 @@
 
 **Status:** pre-alpha foundation. Architecture decisions below are **locked** (see
 `docs/adr/`). Implementation contracts for the owned value-add layer live under
-`src/choreo/` as signatures + docstrings only until the vertical slice lands.
+`src/choreoai/` as signatures + docstrings only until the vertical slice lands.
 
 **Tagline:** Multi-agent systems, in production.
 
@@ -66,7 +66,7 @@ User graph / combinators
 
 | User wants to... | Implements | Core still owns |
 |---|---|---|
-| Add a capability | `BaseTool` (or `@choreo.tool`) | dispatch, arg validation, budgeting |
+| Add a capability | `BaseTool` (or `@choreoai.tool`) | dispatch, arg validation, budgeting |
 | Swap the LLM/provider | `BaseChatModel` | the agent loop |
 | Add a cross-cutting concern | `Middleware` | ordering and the run |
 | Add a validation/safety check | `Guardrail` | when checks run, recovery |
@@ -77,7 +77,7 @@ User graph / combinators
 ## Module layout
 
 ```
-src/choreo/
+src/choreoai/
   core/         runnable.py (re-export/alias LCEL)  tool.py  model.py
                 middleware.py  guardrail.py  context.py  events.py
   reliability/  budget.py  retry.py  recovery.py  guardrails/
@@ -100,12 +100,12 @@ implementation does not invent interfaces ad hoc.
 
 | Concern | Module | Role |
 |---|---|---|
-| Budget | `choreo.reliability.budget` | Caps and ledger for tokens/cost/steps/time/tools |
-| Middleware | `choreo.core.middleware` | Onion wrap around a node call |
-| Guardrail | `choreo.core.guardrail` | Pre/post validation that can trip recovery |
-| Recovery | `choreo.reliability.recovery` | retry-with-feedback / replan / fallback / escalate / abort |
-| RunContext | `choreo.core.context` | Per-run state: budget ledger + event cursor |
-| Events | `choreo.core.events` | Typed events + subscriber protocol |
+| Budget | `choreoai.reliability.budget` | Caps and ledger for tokens/cost/steps/time/tools |
+| Middleware | `choreoai.core.middleware` | Onion wrap around a node call |
+| Guardrail | `choreoai.core.guardrail` | Pre/post validation that can trip recovery |
+| Recovery | `choreoai.reliability.recovery` | retry-with-feedback / replan / fallback / escalate / abort |
+| RunContext | `choreoai.core.context` | Per-run state: budget ledger + event cursor |
+| Events | `choreoai.core.events` | Typed events + subscriber protocol |
 
 See source docstrings for signatures. Implementations must stay async-first with thin sync
 wrappers.

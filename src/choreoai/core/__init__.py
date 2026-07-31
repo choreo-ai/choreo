@@ -4,8 +4,8 @@ Substrate types (Runnable, BaseTool, BaseChatModel) are adopted from
 ``langchain-core``; this package owns the opt-in value-add shapes only.
 """
 
-from choreo.core.context import InMemoryRunContext, RunContext
-from choreo.core.events import (
+from choreoai.core.context import InMemoryRunContext, RunContext
+from choreoai.core.events import (
     Event,
     EventEmitter,
     GuardrailTripped,
@@ -18,9 +18,9 @@ from choreo.core.events import (
     Subscriber,
     ToolCalled,
 )
-from choreo.core.guardrail import Guardrail, GuardrailResult, GuardrailStage
-from choreo.core.middleware import Middleware, MiddlewareStack, call_next
-from choreo.core.middleware_impl import (
+from choreoai.core.guardrail import Guardrail, GuardrailResult, GuardrailStage
+from choreoai.core.middleware import Middleware, MiddlewareStack, call_next
+from choreoai.core.middleware_impl import (
     BudgetMiddleware,
     OnionMiddlewareStack,
     TraceMiddleware,

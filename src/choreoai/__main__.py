@@ -4,7 +4,7 @@ Real commands (`choreoai init`, `choreoai run`, ...) are on the roadmap. For now
 this just confirms a working install and points at the project.
 """
 
-from choreo import __version__
+from choreoai import __version__
 
 
 def main() -> None:

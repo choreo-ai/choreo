@@ -26,4 +26,4 @@ and update `RunContext` through the state channel (with a documented reducer if 
 - Positive: multi-thread isolation is natural (per `thread_id` state).
 - Negative: state schema must include a `run_context` (or equivalent) channel; reducers must
   merge ledger updates correctly under parallel nodes.
-- Follow-on: contract in `choreo.core.context`; budget in `choreo.reliability.budget`.
+- Follow-on: contract in `choreoai.core.context`; budget in `choreoai.reliability.budget`.

@@ -5,8 +5,8 @@ from __future__ import annotations
 import pytest
 from langchain_core.runnables import RunnableLambda
 
-from choreo.core import InMemoryRunContext
-from choreo.orchestrate import parallel, sequence
+from choreoai.core import InMemoryRunContext
+from choreoai.orchestrate import parallel, sequence
 
 
 @pytest.mark.asyncio
