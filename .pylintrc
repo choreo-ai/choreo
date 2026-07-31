@@ -1,0 +1,29 @@
+# Minimal pylint config for CI. Primary linting is ruff; pylint is a
+# light secondary check and must stay green without chasing style noise.
+[MAIN]
+ignore-patterns=test_.*?py
+fail-under=9.0
+
+[MESSAGES CONTROL]
+# Convention/refactor noise (ruff covers style); keep useful errors/warnings.
+disable=
+    C0114,  # missing-module-docstring
+    C0115,  # missing-class-docstring
+    C0116,  # missing-function-docstring
+    C0103,  # invalid-name
+    C0415,  # import-outside-toplevel
+    R0903,  # too-few-public-methods
+    R0902,  # too-many-instance-attributes
+    R0914,  # too-many-locals
+    R1721,  # unnecessary-comprehension
+    W2301,  # unnecessary-ellipsis (Protocol/ABC stubs)
+    W0611,  # unused-import (ruff handles)
+    W0612,  # unused-variable (ruff handles)
+    W0621,  # redefined-outer-name
+    W0718,  # broad-exception-caught
+
+[REPORTS]
+score=yes
+
+[FORMAT]
+max-line-length=100
