@@ -6,6 +6,6 @@ This package is early-stage. The public API is still being designed; see the
 project roadmap at https://github.com/choreo-ai/choreoai.
 """
 
-__version__ = "0.0.1"
+__version__ = "0.0.4"
 
 __all__ = ["__version__"]

@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "choreoai"
-version = "0.0.1"
+version = "0.0.4"
 description = "Build production-grade multi-agent AI systems — compose, orchestrate, and observe autonomous agents."
 readme = "README.md"
 requires-python = ">=3.10"
