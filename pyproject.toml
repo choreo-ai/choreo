@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "choreo"
+version = "0.0.1"
+description = "Build production-grade multi-agent AI systems — compose, orchestrate, and observe autonomous agents."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "Karthik Reddy Basupally" }]
+keywords = ["multi-agent", "agents", "llm", "orchestration", "ai-agents"]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.urls]
+Homepage = "https://github.com/choreo-ai/choreo"
+Repository = "https://github.com/choreo-ai/choreo"
+Issues = "https://github.com/choreo-ai/choreo/issues"
+
+[project.scripts]
+choreo = "choreo.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/choreo"]
+
+[tool.ruff]
+line-length = 100
