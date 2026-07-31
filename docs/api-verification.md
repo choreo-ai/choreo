@@ -74,15 +74,15 @@ re-check before implementation if versions have moved.
 - **Tools:** `model.bind_tools([...], strict=True optional)`; responses expose
   `tool_calls` and content blocks.
 - **Async / stream:** full `ainvoke`, `astream`, `astream_events` support.
-- **Current model IDs (Claude Platform, mid-2026):**
-  - Flagship capable (default candidate): `claude-opus-5` (or latest capable snapshot
-    recommended by Anthropic at release time).
-  - Balanced: `claude-sonnet-5`
-  - Fast / cheap: `claude-haiku-4-5-20251001` (alias `claude-haiku-4-5`)
-  - Highest widely released: `claude-fable-5`
-- **Docs note:** LangChain examples often use `claude-haiku-4-5-20251001` for demos;
-  product default for Choreo should be the latest capable general model (Opus-class),
-  overridable by the user.
+- **Current model IDs (verified against the Claude platform, 2026):**
+  - Flagship / most capable: `claude-opus-4-8` (Opus 4.8).
+  - Balanced (**Choreo default**): `claude-sonnet-5`.
+  - Fast / cheap: `claude-haiku-4-5-20251001` (alias `claude-haiku-4-5`).
+  - Also in the Claude 5 family: `claude-fable-5`.
+  - NOTE: there is **no** `claude-opus-5`. The flagship Opus id is `claude-opus-4-8`.
+- **Docs note:** Choreo defaults to `claude-sonnet-5` (sane cost/latency for running many
+  agents, consistent with the budgets pitch), with `claude-opus-4-8` documented for maximum
+  capability. Always user-overridable.
 
 ## Packaging anchors
 

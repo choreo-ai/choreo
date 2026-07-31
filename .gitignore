@@ -76,3 +76,7 @@ data/
 logs/
 *.log
 traces/
+
+# Local AI coworking / handoff files (not for the public repo)
+/GROK.md
+/.grok-run.log
