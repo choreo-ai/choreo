@@ -9,12 +9,16 @@ from __future__ import annotations
 import time
 from collections.abc import Awaitable, Callable, Sequence
 from datetime import datetime, timezone
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from choreo.core.context import RunContext
 from choreo.core.events import EventEmitter, SimpleEventEmitter, StepFinished
 from choreo.core.middleware import Middleware, MiddlewareStack, NextCall
-from choreo.reliability.budget import Budget, BudgetDimensions, BudgetExhausted
+
+if TYPE_CHECKING:
+    # Avoid circular import: reliability.budget imports core.context, and
+    # core.__init__ imports this module. Runtime imports are deferred below.
+    from choreo.reliability.budget import Budget
 
 
 class OnionMiddlewareStack(MiddlewareStack):
@@ -90,10 +94,15 @@ class BudgetMiddleware(Middleware):
         amounts: dict[str, float] | None = None,
         name: str = "budget",
     ) -> None:
+        # Lazy import: keep core importable before/without reliability load order.
+        from choreo.reliability.budget import BudgetDimensions
+
         self.budget = budget
         self.name = name
         # Default: one step per wrapped node invocation.
-        self.amounts = dict(amounts) if amounts is not None else {BudgetDimensions.STEPS.value: 1.0}
+        self.amounts = (
+            dict(amounts) if amounts is not None else {BudgetDimensions.STEPS.value: 1.0}
+        )
 
     async def ainvoke(
         self,
@@ -102,6 +111,8 @@ class BudgetMiddleware(Middleware):
         *,
         context: RunContext | None = None,
     ) -> Any:
+        from choreo.reliability.budget import BudgetExhausted
+
         # check then consume (consume re-checks); strict raises BudgetExhausted
         decision = self.budget.check(self.amounts, context=context)
         if not decision.allowed:
