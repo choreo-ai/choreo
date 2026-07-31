@@ -1,0 +1,20 @@
+/* ChoreoAI brand palette for Material */
+:root {
+  --md-primary-fg-color: #C06B4E;      /* terracotta */
+  --md-primary-fg-color--light: #CE8468;
+  --md-primary-fg-color--dark: #A8583D; /* deep */
+  --md-accent-fg-color: #A8583D;
+}
+
+/* Dark scheme: keep terracotta accents readable on ink */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #C06B4E;
+  --md-accent-fg-color: #CE8468;
+  --md-default-bg-color: #26241f;
+}
+
+/* Landing "grid cards" spacing already provided by Material; small polish */
+.md-typeset .grid.cards > :is(ul, ol) > li,
+.md-typeset .grid > .card {
+  border-radius: 0.6rem;
+}

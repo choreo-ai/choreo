@@ -1,0 +1,100 @@
+site_name: ChoreoAI
+site_description: Build production-grade multi-agent AI systems — compose, orchestrate, and observe autonomous agents.
+site_url: https://choreo-ai.github.io/choreoai/
+repo_url: https://github.com/choreo-ai/choreoai
+repo_name: choreo-ai/choreoai
+edit_uri: edit/main/docs/
+copyright: Copyright &copy; 2026 Karthik Reddy Basupally · MIT
+
+theme:
+  name: material
+  logo: assets/logo.svg
+  favicon: assets/favicon.svg
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - navigation.tracking
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search
+  - gen-files:
+      scripts:
+        - scripts/gen_ref_pages.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - section-index
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          paths: [src]
+          options:
+            docstring_style: google
+            docstring_section_style: table
+            show_root_heading: true
+            show_root_full_path: false
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            show_signature_annotations: true
+            separate_signature: true
+            signature_crossrefs: true
+            merge_init_into_class: true
+            filters: ["!^_"]
+            members_order: source
+            show_source: true
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - Home: index.md
+  - Design: DESIGN.md
+  - API verification: api-verification.md
+  - Architecture decisions:
+      - adr/0001-composition-over-inheritance.md
+      - adr/0002-lcel-runnable-node-interface.md
+      - adr/0003-middleware-onion.md
+      - adr/0004-compat-first-owned-value-add.md
+      - adr/0005-langgraph-engine.md
+      - adr/0006-runcontext-in-graph-state.md
+      - adr/0007-typed-event-stream.md
+      - adr/0008-packaging-optional-extras.md
+  - API reference: reference/

@@ -34,6 +34,13 @@ dev = [
   "build>=1.0",
   "pylint>=3.0",
 ]
+docs = [
+  "mkdocs-material>=9.5",
+  "mkdocstrings[python]>=0.26",
+  "mkdocs-gen-files>=0.5",
+  "mkdocs-literate-nav>=0.6",
+  "mkdocs-section-index>=0.3",
+]
 
 [project.urls]
 Homepage = "https://github.com/choreo-ai/choreoai"
