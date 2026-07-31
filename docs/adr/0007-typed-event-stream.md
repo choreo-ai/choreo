@@ -7,7 +7,7 @@ Accepted (locked).
 ## Context
 
 Teams need traces, metrics, and evals without baking a single vendor or logger into core.
-LangGraph and LangChain already stream events; Choreo needs a stable, typed public contract
+LangGraph and LangChain already stream events; ChoreoAI needs a stable, typed public contract
 that value-add features can emit and subscribers can consume.
 
 ## Decision
@@ -21,8 +21,8 @@ The **public observability contract** is a **typed event stream**. Core event ki
 - `StepFinished`
 
 Tracing, metrics, and evals are **subscribers** -- they do not own the run loop. Bridge
-LangGraph streaming / `astream_events` into this model where useful, but Choreo features
-emit Choreo events explicitly so the contract stays stable across engine versions.
+LangGraph streaming / `astream_events` into this model where useful, but ChoreoAI features
+emit ChoreoAI events explicitly so the contract stays stable across engine versions.
 
 ## Consequences
 

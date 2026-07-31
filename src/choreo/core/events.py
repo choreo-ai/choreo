@@ -2,7 +2,7 @@
 
 Design (ADR 0007): tracing, metrics, and evals are subscribers. Core emits
 typed events; engines may bridge LangGraph streams into this model, but the
-public shapes are owned by Choreo.
+public shapes are owned by ChoreoAI.
 """
 
 from __future__ import annotations
@@ -15,7 +15,7 @@ from typing import Any, Literal, Union
 
 @dataclass(frozen=True, kw_only=True)
 class Event:
-    """Base fields shared by every Choreo event.
+    """Base fields shared by every ChoreoAI event.
 
     Attributes:
         type: Discriminator string matching the concrete event kind.

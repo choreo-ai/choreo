@@ -1,4 +1,4 @@
-"""Core Choreo contracts: middleware, guardrails, run context, events.
+"""Core ChoreoAI contracts: middleware, guardrails, run context, events.
 
 Substrate types (Runnable, BaseTool, BaseChatModel) are adopted from
 ``langchain-core``; this package owns the opt-in value-add shapes only.

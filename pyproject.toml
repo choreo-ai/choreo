@@ -41,6 +41,7 @@ Repository = "https://github.com/choreo-ai/choreoai"
 Issues = "https://github.com/choreo-ai/choreoai/issues"
 
 [project.scripts]
+choreoai = "choreo.__main__:main"
 choreo = "choreo.__main__:main"
 
 [tool.hatch.build.targets.wheel]

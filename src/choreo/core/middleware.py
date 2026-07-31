@@ -56,7 +56,7 @@ class Middleware(ABC):
             call_next: Awaitable callable that invokes the inner layer/node
                 with a (possibly modified) value and returns the inner output.
             context: Optional per-run context (budget ledger, event cursor).
-                When the node runs inside a Choreo/LangGraph state, this is the
+                When the node runs inside a ChoreoAI/LangGraph state, this is the
                 same object stored in graph state (ADR 0006).
 
         Returns:

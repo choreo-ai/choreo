@@ -19,7 +19,7 @@ from choreo.core.middleware_impl import OnionMiddlewareStack
 
 
 class GraphState(TypedDict, total=False):
-    """Graph state channel layout for Choreo plans."""
+    """Graph state channel layout for ChoreoAI plans."""
 
     value: Any
     output: Any
@@ -166,7 +166,7 @@ async def arun_plan(
     value: Any,
     *,
     run_context: RunContext | dict[str, Any] | None = None,
-    thread_id: str = "choreo-default",
+    thread_id: str = "choreoai-default",
 ) -> GraphState:
     """Invoke a compiled plan with ``RunContext`` seeded into state."""
     if run_context is None:

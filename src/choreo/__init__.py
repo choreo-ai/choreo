@@ -1,4 +1,4 @@
-"""Choreo — build production-grade multi-agent AI systems.
+"""ChoreoAI — build production-grade multi-agent AI systems.
 
 Compose, orchestrate, and observe autonomous agents — reliably.
 

@@ -7,8 +7,8 @@ Accepted (locked).
 ## Context
 
 Adoption dies if teams must rewrite tools and models to use a production layer. The product
-promise is: drop Choreo onto an existing LangChain/LangGraph app. The reason to install
-Choreo is production value-add, not a new substrate.
+promise is: drop ChoreoAI onto an existing LangChain/LangGraph app. The reason to install
+ChoreoAI is production value-add, not a new substrate.
 
 ## Decision
 

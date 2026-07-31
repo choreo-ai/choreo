@@ -6,13 +6,13 @@ Accepted (locked).
 
 ## Context
 
-We need a single node interface so Choreo agents drop into user LangGraph/LCEL pipelines and
-user nodes drop into Choreo combinators (bidirectional interop). Inventing our own `Node`
+We need a single node interface so ChoreoAI agents drop into user LangGraph/LCEL pipelines and
+user nodes drop into ChoreoAI combinators (bidirectional interop). Inventing our own `Node`
 ABC would fork the ecosystem and require adapters in both directions.
 
 ## Decision
 
-**Reuse** `langchain_core.runnables.Runnable`. A Choreo agent **is** an LCEL Runnable.
+**Reuse** `langchain_core.runnables.Runnable`. A ChoreoAI agent **is** an LCEL Runnable.
 
 - Call contract: `invoke` / `ainvoke` / `stream` / `batch` (+ async variants).
 - Composition: `|`, `RunnableParallel`, combinators that return Runnables.

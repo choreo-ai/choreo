@@ -14,7 +14,7 @@ re-check before implementation if versions have moved.
 - **Subclass pattern:** implement sync `_run` and optionally async `_arun` (historic
   convention still used by custom tools); public entry is via `invoke`/`ainvoke`.
 - **Convenience:** `@tool` decorator and `StructuredTool` produce `BaseTool` instances.
-- **Choreo implication:** accept any `BaseTool`; `@choreo.tool` is a thin convenience that
+- **ChoreoAI implication:** accept any `BaseTool`; `@choreo.tool` is a thin convenience that
   yields a `BaseTool`. Do not invent a parallel tool type.
 
 ## `langchain_core.language_models.BaseChatModel`
@@ -27,7 +27,7 @@ re-check before implementation if versions have moved.
   `with_fallbacks`, `configurable_fields`, `configurable_alternatives`.
 - **Custom model hooks:** required `_generate` + `_llm_type`; optional `_stream`,
   `_agenerate`, `_astream`.
-- **Choreo implication:** agents take a `BaseChatModel`; tool loop uses `bind_tools` and
+- **ChoreoAI implication:** agents take a `BaseChatModel`; tool loop uses `bind_tools` and
   inspects `AIMessage.tool_calls`. Default client is Anthropic via `langchain-anthropic`.
 
 ## `langchain_core.runnables.Runnable`
@@ -40,7 +40,7 @@ re-check before implementation if versions have moved.
 - **Standard modifiers:** `with_retry`, `with_fallbacks`, `with_config`, `with_listeners`,
   `bind`, `pipe`, `as_tool`.
 - **Schemas:** `input_schema` / `output_schema` / `config_schema`.
-- **Choreo implication:** a Choreo agent/node **is** an LCEL `Runnable`. We re-export or
+- **ChoreoAI implication:** a ChoreoAI agent/node **is** an LCEL `Runnable`. We re-export or
   alias; we do not define a competing node ABC. Middleware wraps a Runnable and returns a
   Runnable.
 
@@ -62,25 +62,25 @@ re-check before implementation if versions have moved.
   `Command(resume=value)`. Requires a checkpointer + `thread_id` in config.
 - **Streaming:** `graph.stream` / `stream_events(..., version="v3")`; interrupts surface
   via stream metadata / `__interrupt__`.
-- **Choreo implication:** engine compiles our plan to `StateGraph`; middleware wraps each
+- **ChoreoAI implication:** engine compiles our plan to `StateGraph`; middleware wraps each
   node *before* it is added so budgets/guardrails/traces apply uniformly. `RunContext`
   (budget ledger + event cursor) lives in graph state so it survives checkpoint/resume.
 
 ## Default model: `langchain-anthropic.ChatAnthropic`
 
 - **Import:** `from langchain_anthropic import ChatAnthropic`
-- **Is a:** `BaseChatModel` (drop-in for Choreo agent config).
+- **Is a:** `BaseChatModel` (drop-in for ChoreoAI agent config).
 - **Construction:** `ChatAnthropic(model="...", temperature=..., max_tokens=..., ...)`.
 - **Tools:** `model.bind_tools([...], strict=True optional)`; responses expose
   `tool_calls` and content blocks.
 - **Async / stream:** full `ainvoke`, `astream`, `astream_events` support.
 - **Current model IDs (verified against the Claude platform, 2026):**
   - Flagship / most capable: `claude-opus-4-8` (Opus 4.8).
-  - Balanced (**Choreo default**): `claude-sonnet-5`.
+  - Balanced (**ChoreoAI default**): `claude-sonnet-5`.
   - Fast / cheap: `claude-haiku-4-5-20251001` (alias `claude-haiku-4-5`).
   - Also in the Claude 5 family: `claude-fable-5`.
   - NOTE: there is **no** `claude-opus-5`. The flagship Opus id is `claude-opus-4-8`.
-- **Docs note:** Choreo defaults to `claude-sonnet-5` (sane cost/latency for running many
+- **Docs note:** ChoreoAI defaults to `claude-sonnet-5` (sane cost/latency for running many
   agents, consistent with the budgets pitch), with `claude-opus-4-8` documented for maximum
   capability. Always user-overridable.
 

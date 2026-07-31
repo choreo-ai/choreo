@@ -1,6 +1,6 @@
 """Default Claude model factory (langchain-anthropic ChatAnthropic).
 
-Choreo default model id is ``claude-sonnet-5``; flagship option is
+ChoreoAI default model id is ``claude-sonnet-5``; flagship option is
 ``claude-opus-4-8`` (there is no ``claude-opus-5``).
 """
 

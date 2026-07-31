@@ -23,8 +23,8 @@ Optional extras keep installs honest:
 Rules:
 
 - Core must **not** import the heavy `langchain` package; anchor on `langchain-core`.
-- Only `choreo.engine` and `choreo.integrations` may import `langgraph` / heavier
-  `langchain`.
+- Only `choreo.engine` and `choreo.integrations` (Python import path; package name is
+  `choreoai`) may import `langgraph` / heavier `langchain`.
 - Import errors for missing extras should be clear and actionable.
 
 ## Consequences

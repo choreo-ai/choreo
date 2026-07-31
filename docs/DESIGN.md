@@ -1,4 +1,4 @@
-# Choreo design
+# ChoreoAI design
 
 **Status:** pre-alpha foundation. Architecture decisions below are **locked** (see
 `docs/adr/`). Implementation contracts for the owned value-add layer live under
@@ -6,7 +6,7 @@
 
 **Tagline:** Multi-agent systems, in production.
 
-**Positioning:** *"The production layer for LangGraph."* Drop Choreo onto an existing
+**Positioning:** *"The production layer for LangGraph."* Drop ChoreoAI onto an existing
 LangChain/LangGraph app and opt into budgets, retries, recovery, guardrails, context
 engineering, evals, and observability -- without rewriting tools, models, or graphs.
 
@@ -15,9 +15,9 @@ engineering, evals, and observability -- without rewriting tools, models, or gra
 1. **Zero rewrite for substrate assets.** Existing `BaseTool`, `BaseChatModel`, and LCEL
    `Runnable` graphs work unchanged.
 2. **Opt-in production concerns.** Value lives in budgets, middleware, guardrails,
-   recovery, events -- not in forcing a Choreo base class.
+   recovery, events -- not in forcing a ChoreoAI base class.
 3. **LangGraph-native engine.** State, checkpoints, streaming, and HITL come from
-   LangGraph; Choreo does not build a competing runtime.
+   LangGraph; ChoreoAI does not build a competing runtime.
 4. **Honest packaging.** Core stays light (`langchain-core` + Claude client); engine and
    heavier integrations are optional extras.
 
@@ -25,7 +25,7 @@ engineering, evals, and observability -- without rewriting tools, models, or gra
 
 - Competing with LangGraph as a graph engine.
 - A `BaseAgent` template-method hierarchy.
-- Requiring users to subclass Choreo types to use tools or models.
+- Requiring users to subclass ChoreoAI types to use tools or models.
 - Shipping full evals / context-engineering implementations before the thin vertical slice.
 
 ## Architecture summary
@@ -34,7 +34,7 @@ engineering, evals, and observability -- without rewriting tools, models, or gra
 User graph / combinators
         |
         v
-  [ Middleware onion ]  <-- budget, retry, guardrail, trace (Choreo value-add)
+  [ Middleware onion ]  <-- budget, retry, guardrail, trace (ChoreoAI value-add)
         |
         v
   LCEL Runnable nodes   <-- agents, tools, user Runnables (substrate)

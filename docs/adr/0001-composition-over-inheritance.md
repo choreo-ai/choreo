@@ -23,7 +23,7 @@ We will not ship a template-method `BaseAgent` hierarchy.
 
 ## Consequences
 
-- Positive: users keep their own agent shapes; Choreo concerns wrap from the outside.
+- Positive: users keep their own agent shapes; ChoreoAI concerns wrap from the outside.
 - Positive: testing is easier (swap one policy or middleware at a time).
 - Negative: less "one base class to learn"; docs must show composition patterns clearly.
 - Follow-on: middleware (ADR 0003) and seam table in DESIGN.md carry customization.

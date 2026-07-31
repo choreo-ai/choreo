@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="assets/banner.png" alt="Choreo — Multi-agent systems, in production." width="840">
+  <img src="assets/banner.png" alt="ChoreoAI — Multi-agent systems, in production." width="840">
+</p>
+
+<p align="center">
+  <img src="assets/logo.svg" alt="ChoreoAI" width="72">
 </p>
 
 <p align="center">
@@ -12,14 +16,15 @@
   <img src="https://img.shields.io/badge/python-3.10%2B-33302B?style=flat-square" alt="python 3.10+">
   <img src="https://img.shields.io/badge/license-MIT-A8583D?style=flat-square" alt="license: MIT">
   <img src="https://img.shields.io/badge/PRs-welcome-A8583D?style=flat-square" alt="PRs welcome">
+  <a href="https://pypi.org/project/choreoai/"><img src="https://img.shields.io/pypi/v/choreoai?style=flat-square&color=A8583D" alt="PyPI"></a>
 </p>
 
 ---
 
-**Choreo** is an open-source framework for building **multi-agent AI systems that survive
+**ChoreoAI** is an open-source framework for building **multi-agent AI systems that survive
 production**. Most agent frameworks make the happy path easy and leave you to discover the
 hard parts &mdash; hallucinations, runaway loops, lost state, unbounded cost &mdash; in
-incident review. Choreo makes those the *default* things you control: retries, guardrails,
+incident review. ChoreoAI makes those the *default* things you control: retries, guardrails,
 budgets, evals, and tracing are first-class, not add-ons.
 
 Think of it as the layer between "a clever prompt" and "a system you can put on-call."
@@ -28,7 +33,7 @@ Think of it as the layer between "a clever prompt" and "a system you can put on-
 > experience and are still landing &mdash; follow the [roadmap](#roadmap). ⭐ Star the repo to
 > track progress; issues and PRs are welcome.
 
-## Why Choreo
+## Why ChoreoAI
 
 - **Reliability is the product.** Every run is bounded by step, token, time, and cost budgets.
   Nothing loops forever; nothing surprises your bill.
@@ -47,20 +52,20 @@ Think of it as the layer between "a clever prompt" and "a system you can put on-
 ## Install
 
 ```bash
-# From PyPI (coming soon)
+# From PyPI
 pip install choreoai
 
-# From source (works today — installs the CLI and package skeleton)
+# From source
 pip install git+https://github.com/choreo-ai/choreoai
 ```
 
 ```bash
-choreo            # confirm the install
+choreoai            # confirm the install (alias: choreo)
 ```
 
 ## Quickstart
 
-> Illustrative &mdash; this is the API Choreo is being designed around.
+> Illustrative &mdash; this is the API ChoreoAI is being designed around.
 
 ```python
 from choreo import BaseAgent, Orchestrator, budget
@@ -86,18 +91,18 @@ result = fleet.run("Compare vector databases for RAG")
 - [ ] **Orchestration** &mdash; planner + workers + synthesizer on a real research-assistant task.
 - [ ] **Reliability** &mdash; budgets, guardrails, grounding checks, recovery paths.
 - [ ] **Evals & observability** &mdash; eval harness, a critic agent, full-run traces.
-- [ ] **`choreo` CLI** &mdash; `init`, `run`, `trace`.
-- [ ] **Docs site + first release to PyPI.**
+- [ ] **`choreoai` CLI** &mdash; `init`, `run`, `trace`.
+- [x] **First releases on PyPI** &mdash; `choreoai` on pypi.org; snapshots on TestPyPI.
 
 ## Contributing
 
-Choreo is open source (MIT) and early &mdash; the best time to shape it. Bug reports, ideas,
+ChoreoAI is open source (MIT) and early &mdash; the best time to shape it. Bug reports, ideas,
 and PRs are all welcome. Open an [issue](https://github.com/choreo-ai/choreoai/issues) to
 discuss a change before large PRs. Dev setup:
 
 ```bash
 git clone https://github.com/choreo-ai/choreoai
-cd choreo
+cd choreoai
 pip install -e ".[dev]"
 pytest
 ```
@@ -109,7 +114,7 @@ pytest
 <br>
 
 <p align="center">
-  <img src="assets/logo.svg" alt="" width="28"><br>
-  <sub><strong>Choreo</strong> &middot; multi-agent systems, in production &middot;
+  <img src="assets/logo.svg" alt="ChoreoAI" width="36"><br>
+  <sub><strong>ChoreoAI</strong> &middot; multi-agent systems, in production &middot;
   <a href="https://github.com/choreo-ai/choreoai">github.com/choreo-ai/choreoai</a></sub>
 </p>
