@@ -89,8 +89,8 @@ re-check before implementation if versions have moved.
 | Extra | Purpose |
 |---|---|
 | (core) | `langchain-core` + default Anthropic client (`langchain-anthropic`) |
-| `choreo[langgraph]` | LangGraph engine |
-| `choreo[langchain]` | heavier LangChain adapters |
+| `choreoai[langgraph]` | LangGraph engine |
+| `choreoai[langchain]` | heavier LangChain adapters |
 
 Core modules must not import the heavy `langchain` meta-package; only `langchain-core`.
 `engine/` and `integrations/` are the only places `langgraph` / heavier `langchain` appear.

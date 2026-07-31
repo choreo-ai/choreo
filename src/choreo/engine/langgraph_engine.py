@@ -1,6 +1,6 @@
 """Compile sequence/parallel agent plans to a LangGraph StateGraph.
 
-Requires optional extra: ``pip install choreo[langgraph]``.
+Requires optional extra: ``pip install choreoai[langgraph]``.
 
 Middleware wraps each node *before* ``add_node`` (ADR 0003, ADR 0005).
 ``RunContext`` lives in graph state (ADR 0006). Checkpointer: ``InMemorySaver``.
@@ -32,7 +32,7 @@ def _require_langgraph() -> tuple[Any, Any, Any, Any]:
         from langgraph.graph import END, START, StateGraph
     except ImportError as exc:  # pragma: no cover - exercised when extra missing
         raise ImportError(
-            "choreo.engine requires langgraph; install with: pip install choreo[langgraph]"
+            "choreo.engine requires langgraph; install with: pip install choreoai[langgraph]"
         ) from exc
     return StateGraph, START, END, InMemorySaver
 

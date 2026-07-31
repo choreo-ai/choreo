@@ -48,7 +48,7 @@ Think of it as the layer between "a clever prompt" and "a system you can put on-
 
 ```bash
 # From PyPI (coming soon)
-pip install choreo
+pip install choreoai
 
 # From source (works today — installs the CLI and package skeleton)
 pip install git+https://github.com/choreo-ai/choreo

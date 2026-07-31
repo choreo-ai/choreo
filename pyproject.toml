@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "choreo"
+name = "choreoai"
 version = "0.0.1"
 description = "Build production-grade multi-agent AI systems — compose, orchestrate, and observe autonomous agents."
 readme = "README.md"

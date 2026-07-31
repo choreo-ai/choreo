@@ -16,9 +16,9 @@ Optional extras keep installs honest:
 
 | Install | Provides |
 |---|---|
-| `pip install choreo` | Core + Claude model client; depends on `langchain-core` (+ `langchain-anthropic`) |
-| `choreo[langgraph]` | LangGraph engine |
-| `choreo[langchain]` | Extra LangChain integrations/adapters |
+| `pip install choreoai` | Core + Claude model client; depends on `langchain-core` (+ `langchain-anthropic`) |
+| `choreoai[langgraph]` | LangGraph engine |
+| `choreoai[langchain]` | Extra LangChain integrations/adapters |
 
 Rules:
 
