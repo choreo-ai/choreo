@@ -8,7 +8,7 @@ from langchain_core.runnables import Runnable
 
 from choreo.agents import LLMAgent
 from choreo.core import ListSubscriber, SimpleEventEmitter
-from tests.conftest import FakeChatModel
+from fakes import FakeChatModel
 
 
 @pytest.mark.asyncio
