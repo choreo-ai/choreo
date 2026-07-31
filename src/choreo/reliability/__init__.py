@@ -6,6 +6,7 @@ from choreo.reliability.budget import (
     BudgetDimensions,
     BudgetExhausted,
     BudgetSnapshot,
+    InMemoryBudget,
 )
 from choreo.reliability.recovery import (
     RecoveryAction,
@@ -20,6 +21,7 @@ __all__ = [
     "BudgetDimensions",
     "BudgetExhausted",
     "BudgetSnapshot",
+    "InMemoryBudget",
     "RecoveryAction",
     "RecoveryContext",
     "RecoveryDecision",

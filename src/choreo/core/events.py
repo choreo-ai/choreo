@@ -154,3 +154,42 @@ class EventEmitter(ABC):
     async def emit(self, event: Event) -> None:
         """Persist seq via ``RunContext`` if needed and notify subscribers."""
         ...
+
+
+class SimpleEventEmitter(EventEmitter):
+    """In-process fan-out emitter; subscriber failures never tear down the run."""
+
+    def __init__(self) -> None:
+        self._subscribers: list[Subscriber] = []
+
+    def subscribe(self, subscriber: Subscriber) -> None:
+        if subscriber not in self._subscribers:
+            self._subscribers.append(subscriber)
+
+    def unsubscribe(self, subscriber: Subscriber) -> None:
+        self._subscribers = [s for s in self._subscribers if s is not subscriber]
+
+    async def emit(self, event: Event) -> None:
+        for subscriber in list(self._subscribers):
+            try:
+                await subscriber.on_event(event)
+            except Exception:
+                # Observability must not break the run (ADR 0007).
+                continue
+
+    @property
+    def subscribers(self) -> tuple[Subscriber, ...]:
+        return tuple(self._subscribers)
+
+
+class ListSubscriber(Subscriber):
+    """Collects events in a list (useful for tests and simple traces)."""
+
+    name = "list"
+
+    def __init__(self, name: str = "list") -> None:
+        self.name = name
+        self.events: list[Event] = []
+
+    async def on_event(self, event: Event) -> None:
+        self.events.append(event)

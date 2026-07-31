@@ -143,3 +143,115 @@ class Budget(ABC):
     ) -> bool:
         """Return True if any (or named) dimension has no remaining capacity."""
         ...
+
+
+class InMemoryBudget(Budget):
+    """Process-local budget with optional ``RunContext`` ledger as source of truth.
+
+    When ``context`` is provided, caps/consumed are read and written through
+    ``context.budget_ledger()`` so checkpoint/resume keeps totals (ADR 0006).
+    Without a context, an internal ledger is used (handy for unit tests).
+    """
+
+    name = "in_memory"
+
+    def __init__(
+        self,
+        caps: dict[str, float] | None = None,
+        *,
+        labels: dict[str, str] | None = None,
+        name: str = "in_memory",
+    ) -> None:
+        self.name = name
+        self._caps: dict[str, float] = {k: float(v) for k, v in (caps or {}).items()}
+        self._consumed: dict[str, float] = {}
+        self._labels: dict[str, str] = dict(labels or {})
+
+    def _caps_and_consumed(
+        self, context: RunContext | None
+    ) -> tuple[dict[str, float], dict[str, float]]:
+        if context is not None:
+            ledger = context.budget_ledger()
+            caps = dict(ledger.get("caps") or self._caps)
+            # Seed context caps from budget defaults when empty.
+            if not ledger.get("caps") and self._caps:
+                caps = dict(self._caps)
+            consumed = {k: float(v) for k, v in (ledger.get("consumed") or {}).items()}
+            return caps, consumed
+        return dict(self._caps), dict(self._consumed)
+
+    def snapshot(self, *, context: RunContext | None = None) -> BudgetSnapshot:
+        caps, consumed = self._caps_and_consumed(context)
+        labels = dict(self._labels)
+        if context is not None:
+            labels = dict(context.budget_ledger().get("labels") or labels)
+        return BudgetSnapshot(caps=caps, consumed=consumed, labels=labels)
+
+    def check(
+        self,
+        amounts: dict[str, float],
+        *,
+        context: RunContext | None = None,
+    ) -> BudgetDecision:
+        snap = self.snapshot(context=context)
+        for dimension, amount in amounts.items():
+            amount_f = float(amount)
+            if dimension not in snap.caps:
+                continue
+            remaining = snap.remaining(dimension)
+            if remaining is not None and amount_f > remaining + 1e-12:
+                return BudgetDecision(
+                    allowed=False,
+                    reason=f"budget exhausted for dimension '{dimension}'",
+                    dimension=dimension,
+                    snapshot=snap,
+                )
+        return BudgetDecision(allowed=True, snapshot=snap)
+
+    def consume(
+        self,
+        amounts: dict[str, float],
+        *,
+        context: RunContext | None = None,
+        strict: bool = True,
+    ) -> BudgetDecision:
+        decision = self.check(amounts, context=context)
+        if not decision.allowed:
+            if strict:
+                raise BudgetExhausted(
+                    decision.reason or "budget exhausted",
+                    decision=decision,
+                )
+            return decision
+
+        caps, consumed = self._caps_and_consumed(context)
+        for dimension, amount in amounts.items():
+            consumed[dimension] = float(consumed.get(dimension, 0.0)) + float(amount)
+
+        if context is not None:
+            labels = dict(context.budget_ledger().get("labels") or self._labels)
+            if not context.budget_ledger().get("caps") and self._caps:
+                caps = dict(self._caps)
+            context.update_budget_ledger(
+                {"caps": caps, "consumed": consumed, "labels": labels}
+            )
+        else:
+            self._consumed = consumed
+
+        return BudgetDecision(allowed=True, snapshot=self.snapshot(context=context))
+
+    def is_exhausted(
+        self,
+        *,
+        context: RunContext | None = None,
+        dimensions: list[str] | None = None,
+    ) -> bool:
+        snap = self.snapshot(context=context)
+        dims = dimensions if dimensions is not None else list(snap.caps.keys())
+        for dimension in dims:
+            if dimension not in snap.caps:
+                continue
+            remaining = snap.remaining(dimension)
+            if remaining is not None and remaining <= 0:
+                return True
+        return False
