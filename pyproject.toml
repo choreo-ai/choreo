@@ -36,9 +36,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/choreo-ai/choreo"
-Repository = "https://github.com/choreo-ai/choreo"
-Issues = "https://github.com/choreo-ai/choreo/issues"
+Homepage = "https://github.com/choreo-ai/choreoai"
+Repository = "https://github.com/choreo-ai/choreoai"
+Issues = "https://github.com/choreo-ai/choreoai/issues"
 
 [project.scripts]
 choreo = "choreo.__main__:main"

@@ -10,7 +10,7 @@ from choreo import __version__
 def main() -> None:
     print(f"Choreo {__version__} - multi-agent systems, in production.")
     print("Early stage: the API is still being designed.")
-    print("See https://github.com/choreo-ai/choreo")
+    print("See https://github.com/choreo-ai/choreoai")
 
 
 if __name__ == "__main__":

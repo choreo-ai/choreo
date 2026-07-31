@@ -51,7 +51,7 @@ Think of it as the layer between "a clever prompt" and "a system you can put on-
 pip install choreoai
 
 # From source (works today — installs the CLI and package skeleton)
-pip install git+https://github.com/choreo-ai/choreo
+pip install git+https://github.com/choreo-ai/choreoai
 ```
 
 ```bash
@@ -92,11 +92,11 @@ result = fleet.run("Compare vector databases for RAG")
 ## Contributing
 
 Choreo is open source (MIT) and early &mdash; the best time to shape it. Bug reports, ideas,
-and PRs are all welcome. Open an [issue](https://github.com/choreo-ai/choreo/issues) to
+and PRs are all welcome. Open an [issue](https://github.com/choreo-ai/choreoai/issues) to
 discuss a change before large PRs. Dev setup:
 
 ```bash
-git clone https://github.com/choreo-ai/choreo
+git clone https://github.com/choreo-ai/choreoai
 cd choreo
 pip install -e ".[dev]"
 pytest
@@ -111,5 +111,5 @@ pytest
 <p align="center">
   <img src="assets/logo.svg" alt="" width="28"><br>
   <sub><strong>Choreo</strong> &middot; multi-agent systems, in production &middot;
-  <a href="https://github.com/choreo-ai/choreo">github.com/choreo-ai/choreo</a></sub>
+  <a href="https://github.com/choreo-ai/choreoai">github.com/choreo-ai/choreoai</a></sub>
 </p>
