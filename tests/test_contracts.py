@@ -19,7 +19,10 @@ def test_core_contract_exports():
         "GuardrailResult",
         "GuardrailStage",
         "RunContext",
+        "InMemoryRunContext",
         "Event",
+        "EventEmitter",
+        "SimpleEventEmitter",
         "Subscriber",
         "RunStarted",
         "RunFinished",
@@ -27,6 +30,9 @@ def test_core_contract_exports():
         "ToolCalled",
         "GuardrailTripped",
         "StepFinished",
+        "BudgetMiddleware",
+        "TraceMiddleware",
+        "OnionMiddlewareStack",
     ):
         assert hasattr(core, name), name
 
@@ -38,6 +44,7 @@ def test_reliability_contract_exports():
         "BudgetDimensions",
         "BudgetExhausted",
         "BudgetSnapshot",
+        "InMemoryBudget",
         "RecoveryAction",
         "RecoveryContext",
         "RecoveryDecision",
