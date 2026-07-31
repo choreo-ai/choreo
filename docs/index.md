@@ -20,9 +20,9 @@ and stream typed events for traces and evals. Reliability is built in,
 not bolted on.
 </p>
 
-<p class="choreo-hero__actions">
-<a href="DESIGN.md" class="md-button md-button--primary">Get started</a>
-<a href="https://github.com/choreo-ai/choreoai" class="md-button choreo-button--ghost">View on GitHub</a>
+<p class="choreo-hero__actions" markdown>
+[Get started](getting-started.md){ .md-button .md-button--primary }
+[View on GitHub](https://github.com/choreo-ai/choreoai){ .md-button .choreo-button--ghost }
 </p>
 
 <div class="choreo-install" role="group" aria-label="Install command">
@@ -191,23 +191,17 @@ Full demo: [`examples/research_pipeline.py`](https://github.com/choreo-ai/choreo
 
 <div class="choreo-next" markdown>
 
-<a class="choreo-next__card" href="DESIGN.md">
-<span class="choreo-next__kicker">Architecture</span>
+[<span class="choreo-next__kicker">Architecture</span>
 <span class="choreo-next__title">Design</span>
-<span class="choreo-next__desc">Principles, module layout, and how the production layer sits on LangGraph.</span>
-</a>
+<span class="choreo-next__desc">Principles, module layout, and how the production layer sits on LangGraph.</span>](DESIGN.md){ .choreo-next__card }
 
-<a class="choreo-next__card" href="reference/choreoai/index.md">
-<span class="choreo-next__kicker">Reference</span>
+[<span class="choreo-next__kicker">Reference</span>
 <span class="choreo-next__title">API reference</span>
-<span class="choreo-next__desc">Auto-generated from source — every public module, class, and function.</span>
-</a>
+<span class="choreo-next__desc">Auto-generated from source — every public module, class, and function.</span>](reference/index.md){ .choreo-next__card }
 
-<a class="choreo-next__card" href="adr/0001-composition-over-inheritance.md">
-<span class="choreo-next__kicker">Decisions</span>
+[<span class="choreo-next__kicker">Decisions</span>
 <span class="choreo-next__title">Architecture ADRs</span>
-<span class="choreo-next__desc">Why composition, LCEL nodes, middleware, and LangGraph were locked in.</span>
-</a>
+<span class="choreo-next__desc">Why composition, LCEL nodes, middleware, and LangGraph were locked in.</span>](adr/0001-composition-over-inheritance.md){ .choreo-next__card }
 
 </div>
 

@@ -124,6 +124,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Getting started: getting-started.md
   - Design:
       - Overview: DESIGN.md
       - API verification: api-verification.md
