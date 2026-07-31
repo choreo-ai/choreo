@@ -80,26 +80,38 @@ plugins:
         python:
           paths: [src]
           options:
+            # Docstrings
             docstring_style: google
             docstring_section_style: table
-            show_root_heading: true
-            show_root_full_path: false
+            # Page already has H1 (`# \`module\``); skip root heading so
+            # classes/functions start at h2 and methods/attrs at h3 — clearer
+            # visual hierarchy and one less redundant title.
+            show_root_heading: false
+            show_root_full_path: true
             show_root_toc_entry: true
+            # Qualified names: full dotted path on every member so symbols are
+            # unambiguous, searchable, and match heading anchors / inventory ids.
+            show_root_members_full_path: true
+            show_object_full_path: true
+            # Type pills in headings + right-hand TOC (class / meth / attr / …)
             show_symbol_type_heading: true
             show_symbol_type_toc: true
+            # Signatures
             show_signature_annotations: true
             separate_signature: true
             signature_crossrefs: true
             line_length: 88
+            # Members
             merge_init_into_class: true
             filters: ["!^_"]
             members_order: source
+            group_by_category: true
+            show_category_heading: false
+            summary: true
             show_source: true
             show_bases: true
             show_inheritance_diagram: false
             heading_level: 2
-            group_by_category: true
-            show_category_heading: false
 
 markdown_extensions:
   - admonition

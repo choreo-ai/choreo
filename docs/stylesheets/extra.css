@@ -710,72 +710,271 @@ body,
 }
 
 /* ==========================================================================
-   mkdocstrings / API reference — scannable, product-grade
+   mkdocstrings / API reference — hierarchy, qualifiers, product polish
    ========================================================================== */
-.md-typeset .doc.doc-object {
-  margin-top: 1.75rem;
-  padding-top: 0.35rem;
+
+/* ---- Brand-aligned symbol-type pills (light) ---- */
+[data-md-color-scheme="default"] {
+  --doc-symbol-parameter-fg-color: #8B5A3C;
+  --doc-symbol-type_parameter-fg-color: #8B5A3C;
+  --doc-symbol-attribute-fg-color: #6B5A3E;
+  --doc-symbol-function-fg-color: #A8583D;
+  --doc-symbol-method-fg-color: #A8583D;
+  --doc-symbol-class-fg-color: #8B3E2A;
+  --doc-symbol-type_alias-fg-color: #6B4E9A;
+  --doc-symbol-module-fg-color: #3D6B4A;
+
+  --doc-symbol-parameter-bg-color: rgba(139, 90, 60, 0.12);
+  --doc-symbol-type_parameter-bg-color: rgba(139, 90, 60, 0.12);
+  --doc-symbol-attribute-bg-color: rgba(107, 90, 62, 0.12);
+  --doc-symbol-function-bg-color: rgba(192, 107, 78, 0.14);
+  --doc-symbol-method-bg-color: rgba(192, 107, 78, 0.14);
+  --doc-symbol-class-bg-color: rgba(168, 88, 61, 0.16);
+  --doc-symbol-type_alias-bg-color: rgba(107, 78, 154, 0.12);
+  --doc-symbol-module-bg-color: rgba(61, 107, 74, 0.12);
 }
 
+/* Dark (slate) — same kinds, lifted for contrast */
+[data-md-color-scheme="slate"] {
+  --doc-symbol-parameter-fg-color: #E0B090;
+  --doc-symbol-type_parameter-fg-color: #E0B090;
+  --doc-symbol-attribute-fg-color: #D4C4A0;
+  --doc-symbol-function-fg-color: #CE8468;
+  --doc-symbol-method-fg-color: #CE8468;
+  --doc-symbol-class-fg-color: #E8A080;
+  --doc-symbol-type_alias-fg-color: #C4A8E8;
+  --doc-symbol-module-fg-color: #9DCFAB;
+
+  --doc-symbol-parameter-bg-color: rgba(224, 176, 144, 0.14);
+  --doc-symbol-type_parameter-bg-color: rgba(224, 176, 144, 0.14);
+  --doc-symbol-attribute-bg-color: rgba(212, 196, 160, 0.12);
+  --doc-symbol-function-bg-color: rgba(206, 132, 104, 0.16);
+  --doc-symbol-method-bg-color: rgba(206, 132, 104, 0.16);
+  --doc-symbol-class-bg-color: rgba(232, 160, 128, 0.16);
+  --doc-symbol-type_alias-bg-color: rgba(196, 168, 232, 0.14);
+  --doc-symbol-module-bg-color: rgba(157, 207, 171, 0.12);
+}
+
+/* Readable full-word pills (override default abbr. content) */
+code.doc-symbol-parameter::after {
+  content: "param";
+}
+code.doc-symbol-type_parameter::after {
+  content: "type-param";
+}
+code.doc-symbol-attribute::after {
+  content: "attribute";
+}
+code.doc-symbol-function::after {
+  content: "function";
+}
+code.doc-symbol-method::after {
+  content: "method";
+}
+code.doc-symbol-class::after {
+  content: "class";
+}
+code.doc-symbol-type_alias::after {
+  content: "type";
+}
+code.doc-symbol-module::after {
+  content: "module";
+}
+
+/* Module root contents (page H1 is the title; root heading often hidden) */
 .md-typeset .doc.doc-object.doc-module > .doc.doc-contents.first {
-  margin-top: 0.5rem;
+  margin-top: 0.35rem;
 }
 
-/* Nested members: clear separation without heavy rules */
-.md-typeset .doc.doc-children > .doc.doc-object {
-  margin-top: 1.65rem;
-  padding-top: 1.1rem;
+/* ---- Object blocks: spacing + divider before top-level members ---- */
+.md-typeset .doc.doc-object {
+  margin-top: 0.25rem;
+}
+
+/* Direct children of a module (classes, functions, attrs): clear section break */
+.md-typeset .doc.doc-module > .doc.doc-contents > .doc.doc-children > .doc.doc-object,
+.md-typeset .doc.doc-contents.first > .doc.doc-children > .doc.doc-object {
+  margin-top: 2.15rem;
+  padding-top: 1.35rem;
   border-top: 1px solid var(--md-default-fg-color--lightest);
 }
 
-.md-typeset .doc.doc-children > .doc.doc-object:first-child {
-  margin-top: 1rem;
-  padding-top: 0.5rem;
+.md-typeset .doc.doc-module > .doc.doc-contents > .doc.doc-children > .doc.doc-object:first-child,
+.md-typeset .doc.doc-contents.first > .doc.doc-children > .doc.doc-object:first-child {
+  margin-top: 1.35rem;
+}
+
+/* Nested members (methods / attrs under a class): softer rhythm */
+.md-typeset .doc.doc-class > .doc.doc-contents > .doc.doc-children > .doc.doc-object,
+.md-typeset .doc.doc-children .doc.doc-children > .doc.doc-object {
+  margin-top: 1.45rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--md-default-fg-color--lightest);
+}
+
+.md-typeset .doc.doc-class > .doc.doc-contents > .doc.doc-children > .doc.doc-object:first-child,
+.md-typeset .doc.doc-children .doc.doc-children > .doc.doc-object:first-child {
+  margin-top: 0.85rem;
+  padding-top: 0.65rem;
   border-top: none;
 }
 
+/* Indent nested content so parent / child reads as a tree */
+.md-typeset .doc.doc-contents:not(.first) {
+  padding-left: 0.85rem;
+  border-left: 2px solid rgba(192, 107, 78, 0.18);
+  margin-left: 0.1rem;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .doc.doc-contents:not(.first) {
+  border-left-color: rgba(206, 132, 104, 0.22);
+}
+
+/* Deeper nesting: slightly more indent */
+.md-typeset .doc.doc-contents:not(.first) .doc.doc-contents:not(.first) {
+  padding-left: 0.75rem;
+  border-left-color: rgba(192, 107, 78, 0.1);
+}
+
+[data-md-color-scheme="slate"]
+  .md-typeset
+  .doc.doc-contents:not(.first)
+  .doc.doc-contents:not(.first) {
+  border-left-color: rgba(206, 132, 104, 0.12);
+}
+
+/* ---- Heading hierarchy: parent large/bold, children smaller ---- */
 .md-typeset .doc-heading {
-  font-weight: 650;
-  letter-spacing: -0.02em;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 0.35rem 0.5rem;
-  margin-bottom: 0.45em;
+  gap: 0.4rem 0.55rem;
+  margin-bottom: 0.5em;
   scroll-margin-top: 5.5rem;
+  line-height: 1.3;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
+/* Module-level members (class / module function) — h2 when root heading hidden */
 .md-typeset h2.doc-heading {
+  font-size: 1.38em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-top: 0.15em;
+  margin-bottom: 0.55em;
+  padding-bottom: 0.45em;
   border-bottom: 1px solid var(--md-default-fg-color--lightest);
-  padding-bottom: 0.4em;
+  color: var(--md-default-fg-color);
 }
 
-.md-typeset h3.doc-heading,
-.md-typeset h4.doc-heading {
-  border-bottom: none;
+/* Class methods / attributes — noticeably smaller than class heading */
+.md-typeset h3.doc-heading {
+  font-size: 1.05em;
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  margin-top: 0.1em;
+  margin-bottom: 0.4em;
   padding-bottom: 0;
+  border-bottom: none;
+  color: var(--md-default-fg-color);
 }
 
+/* Deeper nesting (rare) */
+.md-typeset h4.doc-heading,
+.md-typeset h5.doc-heading,
+.md-typeset h6.doc-heading {
+  font-size: 0.98em;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  margin-top: 0.1em;
+  margin-bottom: 0.35em;
+  padding-bottom: 0;
+  border-bottom: none;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Kind-based weight when heading levels are equal (belt + suspenders) */
+.md-typeset .doc.doc-class > .doc-heading,
+.md-typeset .doc.doc-module > .doc-heading {
+  font-weight: 700;
+}
+
+.md-typeset .doc.doc-function > .doc-heading,
+.md-typeset .doc.doc-attribute > .doc-heading {
+  font-weight: 600;
+}
+
+/* Qualified name: monospace, scannable, dots stay visible */
 .md-typeset .doc-object-name {
+  font-family: var(--md-code-font-family), "JetBrains Mono", ui-monospace, monospace;
   font-weight: 650;
   letter-spacing: -0.02em;
+  font-size: 0.95em;
+  color: var(--md-default-fg-color);
 }
 
-.md-typeset .doc-symbol {
-  border-radius: var(--choreo-radius-xs);
+.md-typeset h2.doc-heading .doc-object-name {
+  font-size: 0.98em;
+  font-weight: 700;
+}
+
+.md-typeset h3.doc-heading .doc-object-name,
+.md-typeset h4.doc-heading .doc-object-name {
+  font-size: 0.94em;
   font-weight: 600;
-  font-size: 0.72em;
-  vertical-align: middle;
+  color: var(--md-default-fg-color--light);
 }
 
-/* Signature blocks */
+/* Symbol pills: compact, rounded, readable next to long paths */
+.md-typeset .doc-symbol,
+code.doc-symbol {
+  border-radius: 999px;
+  font-weight: 650;
+  font-size: 0.62em;
+  letter-spacing: 0.03em;
+  text-transform: lowercase;
+  vertical-align: middle;
+  padding: 0.18em 0.55em !important;
+  border: 1px solid transparent;
+  flex-shrink: 0;
+  line-height: 1.35;
+  font-family: var(--md-text-font-family), "Space Grotesk", system-ui, sans-serif;
+}
+
+code.doc-symbol-class,
+a code.doc-symbol-class {
+  border-color: rgba(168, 88, 61, 0.22);
+}
+
+code.doc-symbol-method,
+a code.doc-symbol-method,
+code.doc-symbol-function,
+a code.doc-symbol-function {
+  border-color: rgba(192, 107, 78, 0.2);
+}
+
+[data-md-color-scheme="slate"] code.doc-symbol-class,
+[data-md-color-scheme="slate"] a code.doc-symbol-class {
+  border-color: rgba(232, 160, 128, 0.28);
+}
+
+/* TOC symbol pills stay compact */
+.md-nav--secondary code.doc-symbol {
+  font-size: 0.58em;
+  padding: 0.12em 0.4em !important;
+  margin-right: 0.2rem;
+}
+
+/* ---- Signature blocks ---- */
 .md-typeset .doc-signature,
 .md-typeset .language-python.doc-signature {
   border-radius: var(--choreo-radius-sm);
   border: 1px solid var(--md-default-fg-color--lightest);
   background: var(--md-code-bg-color);
-  margin: 0.45em 0 0.85em;
+  margin: 0.4em 0 0.95em;
   overflow-x: auto;
+  box-shadow: none;
 }
 
 .md-typeset .doc-signature pre,
@@ -787,7 +986,18 @@ body,
 
 .md-typeset .doc-signature pre > code {
   border: none;
-  padding: 0.75em 0.95em;
+  padding: 0.8em 1em;
+  font-size: 0.86em;
+  line-height: 1.55;
+}
+
+/* Signature token polish */
+.md-typeset .doc-signature .o {
+  color: var(--md-code-hl-special-color, var(--choreo-terracotta));
+}
+
+.md-typeset .doc-signature .kc {
+  color: var(--md-code-hl-constant-color, var(--choreo-deep));
 }
 
 .md-typeset .doc-contents {
@@ -796,13 +1006,30 @@ body,
 }
 
 .md-typeset .doc-contents > p:first-child {
-  margin-top: 0.25em;
+  margin-top: 0.2em;
+}
+
+/* Section titles (Parameters, Returns, …) */
+.md-typeset .doc-contents .doc-section-title,
+.md-typeset .doc-contents h4.doc-section-title,
+.md-typeset .doc-contents strong.doc-section-title {
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--md-default-fg-color);
+  font-size: 0.92em;
 }
 
 /* Parameter / returns tables inside docstrings */
 .md-typeset .doc-contents table {
   font-size: 0.74rem;
-  margin: 0.75em 0 1em;
+  margin: 0.7em 0 1.05em;
+  border-radius: var(--choreo-radius-sm);
+  overflow: hidden;
+}
+
+.md-typeset .doc-contents table th {
+  background-color: var(--md-default-bg-color--light);
+  font-weight: 600;
 }
 
 .md-typeset .doc-contents table th:first-child,
@@ -813,30 +1040,46 @@ body,
   font-weight: 550;
 }
 
+.md-typeset .doc-contents table td {
+  vertical-align: top;
+}
+
 .md-typeset .doc-contents .field-body p {
   margin: 0.25em 0;
 }
 
-/* Labels: abstractmethod, property, etc. */
+/* Auto member summaries */
+.md-typeset .doc-contents .doc-summary,
+.md-typeset .doc-summary {
+  margin: 0.65em 0 1.1em;
+  font-size: 0.76rem;
+}
+
+.md-typeset .doc-summary table {
+  margin-top: 0.35em;
+}
+
+/* Labels: abstractmethod, property, async, etc. */
 .md-typeset span.doc-labels {
   display: inline-flex;
   flex-wrap: wrap;
   gap: 0.3rem;
-  margin-left: 0.15rem;
+  margin-left: 0.1rem;
   vertical-align: middle;
 }
 
-.md-typeset span.doc-labels > * ,
+.md-typeset span.doc-labels > *,
 .md-typeset .doc-label code {
   border-radius: 999px;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: lowercase;
-  padding: 0.12em 0.5em;
+  padding: 0.14em 0.52em;
   background: rgba(192, 107, 78, 0.1);
   color: var(--choreo-deep);
   border: 1px solid rgba(192, 107, 78, 0.18);
+  font-family: var(--md-text-font-family), "Space Grotesk", system-ui, sans-serif;
 }
 
 [data-md-color-scheme="slate"] .md-typeset .doc-label code {
@@ -845,26 +1088,81 @@ body,
   border-color: rgba(206, 132, 104, 0.22);
 }
 
+/* Bases line under class heading */
 .md-typeset .doc.doc-class-bases {
   font-size: 0.74rem;
   color: var(--md-default-fg-color--light);
-  margin: 0.2em 0 0.75em;
+  margin: 0.15em 0 0.7em;
+  padding-left: 0.05rem;
 }
 
 .md-typeset .doc.doc-class-bases code {
   font-size: 0.92em;
 }
 
-/* Source link / details */
+/* Source toggle — clean collapsible */
 .md-typeset .doc details {
-  margin-top: 0.75em;
+  margin-top: 0.85em;
+  margin-bottom: 0.25em;
   font-size: 0.74rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: var(--choreo-radius-sm);
+  background: var(--md-default-bg-color--lightest);
+  box-shadow: none;
+  padding: 0;
+  overflow: hidden;
 }
 
 .md-typeset .doc details summary {
   cursor: pointer;
   font-weight: 550;
   color: var(--md-default-fg-color--light);
+  padding: 0.45em 0.75em;
+  list-style: none;
+  transition: color var(--choreo-ease), background-color var(--choreo-ease);
+}
+
+.md-typeset .doc details summary::-webkit-details-marker {
+  display: none;
+}
+
+.md-typeset .doc details summary:hover {
+  color: var(--choreo-terracotta);
+  background: rgba(192, 107, 78, 0.05);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .doc details summary:hover {
+  color: var(--choreo-light);
+  background: rgba(206, 132, 104, 0.08);
+}
+
+.md-typeset .doc details[open] summary {
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset .doc details .highlight,
+.md-typeset .doc details pre {
+  margin: 0;
+  border-radius: 0;
+  border: none;
+}
+
+.md-typeset .doc details pre > code {
+  border: none;
+  border-radius: 0;
+}
+
+/* Permalink on doc headings */
+.md-typeset .doc-heading .headerlink {
+  font-size: 0.85em;
+  margin-left: 0.1rem;
+}
+
+/* Secondary TOC: slightly denser for long qualified names */
+.md-nav--secondary .md-nav__link {
+  font-size: 0.68rem;
+  line-height: 1.35;
+  word-break: break-word;
 }
 
 /* ==========================================================================
