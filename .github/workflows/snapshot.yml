@@ -3,6 +3,11 @@
 # Uses TestPyPI Trusted Publishing (OIDC) via pypa/gh-action-pypi-publish —
 # no API token is stored in the repository.
 #
+# IMPORTANT: Configure this publisher on https://test.pypi.org (not pypi.org).
+# Production PyPI and TestPyPI have separate Trusted Publisher registries.
+# A snapshot.yml publisher listed only under pypi.org will fail with:
+#   invalid-publisher: no corresponding publisher
+#
 # TestPyPI Trusted Publisher must match exactly:
 #   owner: choreo-ai, repo: choreoai, workflow: snapshot.yml, environment: testpypi
 #
